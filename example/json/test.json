@@ -1,0 +1,18 @@
+{
+  "aListOfInts": [
+    1,
+    2,
+    3
+  ],
+  "list1": {
+    "list2": [
+      true,
+      false
+    ],
+    "list3": [
+      8.5,
+      "2.3"
+    ],
+    "list4": null
+  }
+}
