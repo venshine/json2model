@@ -23,4 +23,4 @@ Please file feature requests and bugs at the [issue tracker][tracker].
 [venshine.cn@gmail.com](venshine.cn@gmail.com)
 
 ## License
-[Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
+[BSD 3-clause](https://opensource.org/license/bsd-3-clause/)

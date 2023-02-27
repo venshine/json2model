@@ -1,0 +1,1 @@
+* init project, This library generates a model object corresponding to a JSON string by executing commands in code

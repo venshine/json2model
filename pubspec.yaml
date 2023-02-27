@@ -1,6 +1,7 @@
 name: json2model
-description: See the name and know the meaning.
+description: This library generates a model object corresponding to a JSON string by executing commands in code.
 version: 1.0.0
+author: venshine<venshine@163.com,venshine.cn@gmail.com>
 homepage: https://github.com/venshine/json2model
 
 environment:
