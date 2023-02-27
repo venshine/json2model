@@ -11,12 +11,12 @@ class Testarray {
 		this.format,
 		this.url
   });
-    final String md5;
-  final String height;
-  final String width;
-  final String type;
-  final List<Format> format;
-  final String url;
+    final String? md5;
+  final String? height;
+  final String? width;
+  final String? type;
+  final List<Format>? format;
+  final String? url;
 
   factory Testarray.fromJson(Map<String, dynamic> json) => Testarray(
     md5: json['md5'],
@@ -32,7 +32,7 @@ class Testarray {
 		'height': height,
 		'width': width,
 		'type': type,
-		'format': format == null ? null : List<dynamic>.from(format.map((x) => x.toJson())),
+		'format': format == null ? null : List<dynamic>.from(format!.map((x) => x.toJson())),
 		'url': url
   };
 
@@ -44,8 +44,8 @@ class Format {
     this.type,
 		this.name
   });
-    final String type;
-  final String name;
+    final String? type;
+  final String? name;
 
   factory Format.fromJson(Map<String, dynamic> json) => Format(
     type: json['type'],

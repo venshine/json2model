@@ -38,7 +38,11 @@ void _parseObject(String name, Map result, Type type, Args param, {List array = 
   result.forEach((key, value) {
     var type = createType(key, value, name, param.names);
     fieldNames.add(type);
-    attrs.write('${''.padLeft(2)}${'final ${type.name} $key;\n'}');
+    if (type.name == "dynamic") {
+      attrs.write('${''.padLeft(2)}${'final ${type.name} $key;\n'}');
+    } else {
+      attrs.write('${''.padLeft(2)}${'final ${type.name}? $key;\n'}');
+    }
   });
   var import = '';
   var decoder = '';
@@ -77,8 +81,10 @@ void _parseObject(String name, Map result, Type type, Args param, {List array = 
   fieldNames.where((element) => element.type != Type.COMMON).forEach((element) {
     if (!isPrimitive(element.className)) {
       var className = upperCamelCase(element.key, name, param.names);
-      _parseJson(className, element.value, param);
-      param.names.add(className);
+      if (className != null) {
+        _parseJson(className, element.value, param);
+        param.names.add(className);
+      }
     }
   });
 }

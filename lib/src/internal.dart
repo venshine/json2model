@@ -18,19 +18,22 @@ String genClassName(String name) {
 }
 
 /// filter special character, capitalize the first letter
-String _filterName(String name) => name
-    ?.split(RegExp(r'\W'))
-    ?.where((element) => element.isNotEmpty)
-    ?.map((it) => '${it[0].toUpperCase()}${it.substring(1)}')
-    ?.join();
+String _filterName(String name) =>
+    name
+        .split(RegExp(r'\W'))
+        .where((element) => element.isNotEmpty)
+        .map((it) => '${it[0].toUpperCase()}${it.substring(1)}')
+        .join();
 
 // ignore: camel_case_extensions
 extension letterCase on String {
   // Lowercase first letter
-  String lowerLetterCase() => length == 1 ? toLowerCase() : this[0].toLowerCase() + substring(1);
+  String lowerLetterCase() =>
+      length == 1 ? toLowerCase() : this[0].toLowerCase() + substring(1);
 
   // Uppercase first letter
-  String upperLetterCase() => length == 1 ? toUpperCase() : this[0].toUpperCase() + substring(1);
+  String upperLetterCase() =>
+      length == 1 ? toUpperCase() : this[0].toUpperCase() + substring(1);
 }
 
 const KEYWORDS = [
@@ -139,4 +142,8 @@ String toType(dynamic data) {
 }
 
 bool isPrimitive(String type) =>
-    type == 'int' || type == 'double' || type == 'bool' || type == 'String' || type == 'dynamic';
+    type == 'int' ||
+    type == 'double' ||
+    type == 'bool' ||
+    type == 'String' ||
+    type == 'dynamic';

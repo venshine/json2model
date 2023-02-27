@@ -44,15 +44,15 @@ Map<String, dynamic> toJson() => {
             case "bool":
             case "String":
             case "dynamic":
-              v = "${e.key} == null ? null : List<dynamic>.from(${e.key}.map((x) => x))";
+              v = "${e.key} == null ? null : List<dynamic>.from(${e.key}!.map((x) => x))";
               break;
             default:
-              v = "${e.key} == null ? null : List<dynamic>.from(${e.key}.map((x) => x.toJson()))";
+              v = "${e.key} == null ? null : List<dynamic>.from(${e.key}!.map((x) => x.toJson()))";
               break;
           }
           break;
         case Type.OBJECT:
-          v = "${e.key} == null ? null : ${e.key}.toJson()";
+          v = "${e.key} == null ? null : ${e.key}?.toJson()";
           break;
         case Type.COMMON:
         default:
@@ -64,7 +64,7 @@ Map<String, dynamic> toJson() => {
   };
 """;
 
-String createDartClass({String import, String decoder, String className, String attrs, List<DartType> fieldNames}) {
+String createDartClass({String import = "", String decoder = "", String className = "", String attrs = "", List<DartType> fieldNames = const []}) {
   var classOut = """
 $import
 $decoder
