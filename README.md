@@ -1,5 +1,6 @@
-# [json2model](https://pub.dev/packages/json2model)
+# json2model [![Pub Version](https://img.shields.io/pub/v/json2model)](https://pub.dev/packages/json2model)
 This library generates a model object corresponding to a JSON string by executing commands in code
+[https://pub.dev/packages/json2model](https://pub.dev/packages/json2model)
 
 ## Usage
 
@@ -13,7 +14,16 @@ void main() {
 }
 ```
 
-## Features and bugs
+## Feature
+| Feature                   | Status   |
+| :----                     |     ---: |
+| null safety               |       ✅ |
+| toJson & fromJson         |       ✅ |
+| encoder & decoder         |       ✅ |
+| all properties final      |       ✅ |
+| all properties optional   |       ✅ |
+
+## Bugs
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
