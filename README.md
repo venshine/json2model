@@ -1,4 +1,4 @@
-# json2model
+# [json2model](https://pub.dev/packages/json2model)
 This library generates a model object corresponding to a JSON string by executing commands in code
 
 ## Usage
