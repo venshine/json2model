@@ -4,30 +4,34 @@ String _fromJson(String className, List<DartType> fieldNames) => """
 factory $className.fromJson(Map<String, dynamic> json) => $className(
     ${fieldNames.map((e) {
       var v = "";
+      var json = "json['${e.keyLiteral}']";
       switch (e.type) {
         case Type.ARRAY:
           switch (e.className) {
-            case "int":
             case "double":
+              // json 中的 1 会被解码为 int，需要转换成 double
+              v = "$json == null ? null : List<double>.from($json.map((x) => (x as num).toDouble()))";
+              break;
+            case "int":
             case "bool":
             case "String":
             case "dynamic":
-              v = "json['${e.key}'] == null ? null : List<${e.className}>.from(json['${e.key}'].map((x) => x))";
+              v = "$json == null ? null : List<${e.className}>.from($json.map((x) => x))";
               break;
             default:
-              v = "json['${e.key}'] == null ? null : List<${e.className}>.from(json['${e.key}'].map((x) => ${e.className}.fromJson(x)))";
+              v = "$json == null ? null : List<${e.className}>.from($json.map((x) => ${e.className}.fromJson(x)))";
               break;
           }
           break;
         case Type.OBJECT:
-          v = "json['${e.key}'] == null ? null : ${e.className}.fromJson(json['${e.key}'])";
+          v = "$json == null ? null : ${e.className}.fromJson($json)";
           break;
         case Type.COMMON:
-        default:
-          v = "json['${e.key}']";
+          // json 中的 1 会被解码为 int，需要转换成 double
+          v = e.className == "double" ? "($json as num?)?.toDouble()" : json;
           break;
       }
-      return '${e.key}: $v';
+      return '${e.fieldName}: $v';
     }).join(',\n\t\t')}
   );
   """;
@@ -36,6 +40,7 @@ String _toJson(List<DartType> fieldNames) => """
 Map<String, dynamic> toJson() => {
     ${fieldNames.map((e) {
       var v = "";
+      var field = e.fieldName;
       switch (e.type) {
         case Type.ARRAY:
           switch (e.className) {
@@ -44,22 +49,21 @@ Map<String, dynamic> toJson() => {
             case "bool":
             case "String":
             case "dynamic":
-              v = "${e.key} == null ? null : List<dynamic>.from(${e.key}!.map((x) => x))";
+              v = "$field == null ? null : List<dynamic>.from($field!.map((x) => x))";
               break;
             default:
-              v = "${e.key} == null ? null : List<dynamic>.from(${e.key}!.map((x) => x.toJson()))";
+              v = "$field == null ? null : List<dynamic>.from($field!.map((x) => x.toJson()))";
               break;
           }
           break;
         case Type.OBJECT:
-          v = "${e.key} == null ? null : ${e.key}?.toJson()";
+          v = "$field == null ? null : $field?.toJson()";
           break;
         case Type.COMMON:
-        default:
-          v = e.key;
+          v = field;
           break;
       }
-      return "'${e.key}': $v";
+      return "'${e.keyLiteral}': $v";
     }).join(',\n\t\t')}
   };
 """;
@@ -72,7 +76,7 @@ $decoder
   var classIn = """
 class $className {
   $className({
-    ${fieldNames.map((e) => 'this.${e.key}').join(',\n\t\t')}
+    ${fieldNames.map((e) => 'this.${e.fieldName}').join(',\n\t\t')}
   });
   \r$attrs
   ${_fromJson(className, fieldNames)}

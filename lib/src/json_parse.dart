@@ -35,13 +35,20 @@ void _parseArray(String name, List array, Type type, Args param) {
 void _parseObject(String name, Map result, Type type, Args param, {List array = const []}) {
   var fieldNames = <DartType>[];
   var attrs = StringBuffer();
+  var usedFieldNames = <String>{};
   result.forEach((key, value) {
-    var type = createType(key, value, name, param.names);
+    // 不同 key 可能转换出相同字段名（如 user-name 与 userName），重名时追加序号
+    var baseName = toFieldName(key);
+    var fieldName = baseName;
+    for (var i = 2; !usedFieldNames.add(fieldName); i++) {
+      fieldName = '$baseName$i';
+    }
+    var type = createType(key, value, name, param.names, fieldName);
     fieldNames.add(type);
     if (type.name == "dynamic") {
-      attrs.write('${''.padLeft(2)}${'final ${type.name} $key;\n'}');
+      attrs.write('${''.padLeft(2)}${'final ${type.name} $fieldName;\n'}');
     } else {
-      attrs.write('${''.padLeft(2)}${'final ${type.name}? $key;\n'}');
+      attrs.write('${''.padLeft(2)}${'final ${type.name}? $fieldName;\n'}');
     }
   });
   var import = '';
@@ -81,10 +88,8 @@ void _parseObject(String name, Map result, Type type, Args param, {List array = 
   fieldNames.where((element) => element.type != Type.COMMON).forEach((element) {
     if (!isPrimitive(element.className)) {
       var className = upperCamelCase(element.key, name, param.names);
-      if (className != null) {
-        _parseJson(className, element.value, param);
-        param.names.add(className);
-      }
+      _parseJson(className, element.value, param);
+      param.names.add(className);
     }
   });
 }

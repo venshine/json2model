@@ -13,3 +13,7 @@ build/
 doc/api/
 
 .idea/
+
+# 私有内容与临时文件
+.private/
+.tmp/

@@ -25,6 +25,27 @@ String _filterName(String name) =>
         .map((it) => '${it[0].toUpperCase()}${it.substring(1)}')
         .join();
 
+/// convert json key to a valid dart field name, e.g. user-name -> userName, 1st -> n1st, class -> class_
+String toFieldName(String key) {
+  var parts = key.split(RegExp(r'[^A-Za-z0-9_$]')).where((element) => element.isNotEmpty).toList();
+  // 命名参数不能以下划线开头，去掉前导下划线
+  var name = parts.isEmpty ? '' : parts.first.replaceFirst(RegExp(r'^_+'), '');
+  name += parts.skip(1).map((it) => it.upperLetterCase()).join();
+  if (name.isEmpty) {
+    name = 'field';
+  }
+  if (RegExp(r'^[0-9]').hasMatch(name)) {
+    name = 'n$name';
+  }
+  if (KEYWORDS.contains(name)) {
+    name = '${name}_';
+  }
+  return name;
+}
+
+/// escape json key for a single-quoted dart string literal
+String escapeKey(String key) => key.replaceAll(r'\', r'\\').replaceAll("'", r"\'").replaceAll(r'$', r'\$');
+
 // ignore: camel_case_extensions
 extension letterCase on String {
   // Lowercase first letter

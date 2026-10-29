@@ -1,15 +1,14 @@
-# Defines a default set of lint rules enforced for
-# projects at Google. For details and rationale,
-# see https://github.com/dart-lang/pedantic#enabled-lints.
-include: package:effective_dart/analysis_options.yaml
+# Dart 官方推荐的 lint 规则（pedantic / effective_dart 已停止维护）
+# 详见 https://pub.dev/packages/lints
+include: package:lints/recommended.yaml
 
-# For lint rules and documentation, see http://dart-lang.github.io/linter/lints.
+# For lint rules and documentation, see https://dart.dev/tools/linter-rules.
 # Uncomment to specify additional rules.
 # linter:
 #   rules:
 #     - camel_case_types
 
 analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
-:
+  exclude:
+    # 生成产物，由测试重新生成
+    - example/lib/models/**
