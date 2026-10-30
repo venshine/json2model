@@ -1,4 +1,7 @@
 # json2model [![Pub Version](https://img.shields.io/pub/v/json2model)](https://pub.dev/packages/json2model)
+
+English | [简体中文](https://github.com/venshine/json2model/blob/main/README-CN.md)
+
 This library generates a model object corresponding to a JSON string by executing commands in code
 [https://pub.dev/packages/json2model](https://pub.dev/packages/json2model)
 
