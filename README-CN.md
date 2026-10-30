@@ -1,4 +1,4 @@
-# json2model [![Pub Version](https://img.shields.io/pub/v/json2model)](https://pub.dev/packages/json2model)
+# json2model [![Pub Version](https://img.shields.io/pub/v/json2model)](https://pub.dev/packages/json2model) [![CI](https://github.com/venshine/json2model/actions/workflows/ci.yml/badge.svg)](https://github.com/venshine/json2model/actions/workflows/ci.yml)
 
 [English](https://github.com/venshine/json2model/blob/main/README.md) | 简体中文
 
