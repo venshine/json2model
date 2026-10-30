@@ -10,3 +10,6 @@
 * Fix: `double` fields accept integer JSON values (e.g. `10`) instead of throwing a type error
 ## 1.1.1
 * Remove the IDE file `json2model.iml` and the outdated `cmd.sh` from the published package
+## 1.1.2
+* Add a Chinese README (`README-CN.md`), linked from `README.md`
+* Use `repository` and `issue_tracker` in `pubspec.yaml` instead of `homepage`
