@@ -13,6 +13,7 @@ build/
 doc/api/
 
 .idea/
+*.iml
 
 # 私有内容与临时文件
 .private/
