@@ -1,5 +1,5 @@
 String upperCamelCase(String name, String superName, List<String> names) {
-  if (KEYWORDS.map((e) => e.toLowerCase()).contains(name.toLowerCase())) {
+  if (keywords.map((e) => e.toLowerCase()).contains(name.toLowerCase())) {
     return '${name.upperLetterCase()}Element';
   }
   if (names.map((e) => e.toLowerCase()).contains(name.toLowerCase())) {
@@ -11,7 +11,7 @@ String upperCamelCase(String name, String superName, List<String> names) {
 /// generate class name, lowercase first letter
 String genClassName(String name) {
   var suffix = '';
-  if (KEYWORDS.map((e) => e.toLowerCase()).contains(name.toLowerCase())) {
+  if (keywords.map((e) => e.toLowerCase()).contains(name.toLowerCase())) {
     suffix = 'Bean';
   }
   return '${_filterName(name)}$suffix';
@@ -37,7 +37,7 @@ String toFieldName(String key) {
   if (RegExp(r'^[0-9]').hasMatch(name)) {
     name = 'n$name';
   }
-  if (KEYWORDS.contains(name)) {
+  if (keywords.contains(name)) {
     name = '${name}_';
   }
   return name;
@@ -57,7 +57,7 @@ extension letterCase on String {
       length == 1 ? toUpperCase() : this[0].toUpperCase() + substring(1);
 }
 
-const KEYWORDS = [
+const keywords = [
   'abstract',
   'as',
   'assert',

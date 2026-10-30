@@ -13,3 +13,6 @@
 ## 1.1.2
 * Add a Chinese README (`README-CN.md`), linked from `README.md`
 * Use `repository` and `issue_tracker` in `pubspec.yaml` instead of `homepage`
+## 1.1.3
+* Add API documentation for `run`, `parse` and the library
+* Follow Dart naming conventions in internal code; no API changes

@@ -8,9 +8,9 @@ void _parseJson(String name, dynamic jsonElement, Args param) {
     result = json.decode(jsonElement);
   }
   if (result is List) {
-    _parseArray(name, result, Type.ARRAY, param);
+    _parseArray(name, result, Type.array, param);
   } else if (result is Map) {
-    _parseObject(name, result, Type.OBJECT, param);
+    _parseObject(name, result, Type.object, param);
   }
 }
 
@@ -59,7 +59,7 @@ void _parseObject(String name, Map result, Type type, Args param, {List array = 
   }
   if (param.content.isEmpty) {
     import = "import 'dart:convert' show json;";
-    if (type == Type.ARRAY) {
+    if (type == Type.array) {
       if (result.isNotEmpty) {
         decoder = '''
         \rList<$name> ${name.lowerLetterCase()}FromJson(String str) => List<$name>.from(json.decode(str).map((x) => $name.fromJson(x)));
@@ -71,7 +71,7 @@ void _parseObject(String name, Map result, Type type, Args param, {List array = 
         \rString ${name.lowerLetterCase()}ToJson(List<$object> data) => json.encode(List<dynamic>.from(data.map((x) => x)));
       ''';
       }
-    } else if (type == Type.OBJECT) {
+    } else if (type == Type.object) {
       decoder = '''
         \r$name ${name.lowerLetterCase()}FromJson(String str) => $name.fromJson(json.decode(str));
         \rString ${name.lowerLetterCase()}ToJson($name data) => json.encode(data.toJson());
@@ -85,7 +85,7 @@ void _parseObject(String name, Map result, Type type, Args param, {List array = 
       fieldNames: fieldNames,
       attrs: attrs.toString());
   param.content.write(clazz);
-  fieldNames.where((element) => element.type != Type.COMMON).forEach((element) {
+  fieldNames.where((element) => element.type != Type.common).forEach((element) {
     if (!isPrimitive(element.className)) {
       var className = upperCamelCase(element.key, name, param.names);
       _parseJson(className, element.value, param);

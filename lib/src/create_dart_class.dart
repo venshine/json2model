@@ -6,7 +6,7 @@ factory $className.fromJson(Map<String, dynamic> json) => $className(
       var v = "";
       var json = "json['${e.keyLiteral}']";
       switch (e.type) {
-        case Type.ARRAY:
+        case Type.array:
           switch (e.className) {
             case "double":
               // json 中的 1 会被解码为 int，需要转换成 double
@@ -23,10 +23,10 @@ factory $className.fromJson(Map<String, dynamic> json) => $className(
               break;
           }
           break;
-        case Type.OBJECT:
+        case Type.object:
           v = "$json == null ? null : ${e.className}.fromJson($json)";
           break;
-        case Type.COMMON:
+        case Type.common:
           // json 中的 1 会被解码为 int，需要转换成 double
           v = e.className == "double" ? "($json as num?)?.toDouble()" : json;
           break;
@@ -42,7 +42,7 @@ Map<String, dynamic> toJson() => {
       var v = "";
       var field = e.fieldName;
       switch (e.type) {
-        case Type.ARRAY:
+        case Type.array:
           switch (e.className) {
             case "int":
             case "double":
@@ -56,10 +56,10 @@ Map<String, dynamic> toJson() => {
               break;
           }
           break;
-        case Type.OBJECT:
+        case Type.object:
           v = "$field == null ? null : $field?.toJson()";
           break;
-        case Type.COMMON:
+        case Type.common:
           v = field;
           break;
       }

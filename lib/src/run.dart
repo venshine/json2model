@@ -4,6 +4,11 @@ import 'package:args/args.dart' show ArgParser;
 
 import 'json_model.dart' show parse;
 
+/// Generates a Dart model file for every JSON file in `--src` and writes it to `--dst`.
+///
+/// [args] accepts `--src` (`-s`, a JSON directory or file, default `json`) and
+/// `--dst` (`-d`, the output directory, default `lib/models`). The directory
+/// structure under `--src` is kept in the output directory.
 void run([List<String> args = const []]) {
   var parser = ArgParser()
     ..addOption('src', abbr: 's', defaultsTo: 'json', help: 'Input the json directory or file.')

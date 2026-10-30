@@ -3,20 +3,20 @@ import 'internal.dart';
 DartType createType(String k, dynamic v, String superName, List<String> names, String fieldName) {
   if (v is List) {
     if (v.isEmpty) {
-      return DartType('List<dynamic>', 'dynamic', Type.ARRAY, k, v, fieldName);
+      return DartType('List<dynamic>', 'dynamic', Type.array, k, v, fieldName);
     } else {
       var type = toType(v);
       if (isPrimitive(type)) {
-        return DartType('List<$type>', type, Type.ARRAY, k, v, fieldName);
+        return DartType('List<$type>', type, Type.array, k, v, fieldName);
       }
       return DartType('List<${upperCamelCase(k, superName, names)}>', upperCamelCase(k, superName, names),
-          Type.ARRAY, k, v, fieldName);
+          Type.array, k, v, fieldName);
     }
   } else if (isPrimitive(toType(v))) {
-    return DartType(toType(v), toType(v), Type.COMMON, k, v, fieldName);
+    return DartType(toType(v), toType(v), Type.common, k, v, fieldName);
   } else {
     return DartType(
-        upperCamelCase(k, superName, names), upperCamelCase(k, superName, names), Type.OBJECT, k, v, fieldName);
+        upperCamelCase(k, superName, names), upperCamelCase(k, superName, names), Type.object, k, v, fieldName);
   }
 }
 
@@ -35,4 +35,4 @@ class DartType {
 }
 
 /// JSON TYPE
-enum Type { COMMON, ARRAY, OBJECT }
+enum Type { common, array, object }
