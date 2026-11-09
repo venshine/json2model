@@ -5,6 +5,8 @@
 # Omit commiting pubspec.lock for library packages:
 # https://dart.dev/guides/libraries/private-files#pubspeclock
 pubspec.lock
+# sample 是应用，锁定依赖版本便于复现
+!sample/pubspec.lock
 
 # Conventional directory for build outputs
 build/

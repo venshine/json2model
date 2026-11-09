@@ -1,0 +1,35 @@
+name: json2model_sample
+description: "Interactive playground for json2model."
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  json2model:
+    path: ../
+  # 格式化生成结果，同时校验生成的代码能被 Dart 解析器解析
+  dart_style: ^3.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - licenses/
+  fonts:
+    - family: SpaceGrotesk
+      fonts:
+        - asset: assets/fonts/space_grotesk_medium.ttf
+          weight: 500
+        - asset: assets/fonts/space_grotesk_bold.ttf
+          weight: 700
+    - family: JetBrainsMono
+      fonts:
+        - asset: assets/fonts/jetbrains_mono.ttf

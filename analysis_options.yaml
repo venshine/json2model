@@ -12,3 +12,5 @@ analyzer:
   exclude:
     # 生成产物，由测试重新生成
     - example/lib/models/**
+    # Flutter 示例是独立工程，依赖 Flutter SDK，由它自己的 analysis_options 检查
+    - sample/**

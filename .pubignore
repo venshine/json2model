@@ -1,0 +1,14 @@
+# 存在 .pubignore 时 pub 不再读取 .gitignore，这里先照抄 .gitignore 的规则
+.dart_tool/
+.packages
+pubspec.lock
+build/
+doc/api/
+.idea/
+*.iml
+.private/
+.tmp/
+
+# Flutter 示例和 README 截图只放在仓库里，不打进 pub 包
+sample/
+screenshot/
