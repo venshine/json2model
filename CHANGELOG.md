@@ -16,3 +16,7 @@
 ## 1.1.3
 * Add API documentation for `run`, `parse` and the library
 * Follow Dart naming conventions in internal code; no API changes
+## 1.1.4
+* Add a Flutter web playground (`sample/`), live at https://venshine.github.io/json2model/
+* README: add the playground demo GIF, screenshots and credits
+* Keep `sample/` and `screenshot/` out of the published package; no library changes
