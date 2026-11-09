@@ -7,7 +7,9 @@ This library generates a model object corresponding to a JSON string by executin
 
 ## Playground
 
-Try the generator in the browser with the [Flutter web playground](https://github.com/venshine/json2model/tree/main/sample): paste JSON, get the model, and every result is checked by the Dart parser.
+**[Try it online →](https://venshine.github.io/json2model/)**
+
+The [Flutter web playground](https://github.com/venshine/json2model/tree/main/sample) runs the generator in the browser: paste JSON, get the model, and every result is checked by the Dart parser.
 
 <img src="https://raw.githubusercontent.com/venshine/json2model/main/screenshot/demo.gif" width="720" alt="json2model playground demo" />
 

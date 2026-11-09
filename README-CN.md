@@ -7,6 +7,8 @@
 
 ## 在线体验（Playground）
 
+**[在线试用 →](https://venshine.github.io/json2model/)**
+
 [Flutter Web 示例](https://github.com/venshine/json2model/tree/main/sample) 可以在浏览器里直接试用：粘贴 JSON 即可得到模型代码，每次生成的结果都会经过 Dart 解析器校验。
 
 <img src="https://raw.githubusercontent.com/venshine/json2model/main/screenshot/demo.gif" width="720" alt="json2model playground 演示" />
