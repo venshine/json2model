@@ -1,0 +1,13 @@
+{
+  "name": "json2model-playground-tool",
+  "private": true,
+  "description": "Browser checks and README demo recording for the json2model playground.",
+  "type": "module",
+  "scripts": {
+    "demo": "node demo.mjs",
+    "live": "node live.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.56.1"
+  }
+}

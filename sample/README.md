@@ -24,6 +24,20 @@ cd sample
 flutter test
 ```
 
+## Browser checks and README demo
+
+[`tool/`](tool) drives the release build in Chrome with Playwright: it checks every feature end to end (the generated code is read back through the clipboard), records the demo GIF and takes the screenshots used in the root README. Needs Google Chrome and `ffmpeg` on the machine.
+
+```bash
+cd sample
+flutter build web --release    # root-path build, no --base-href
+cd tool
+npm ci
+npm run demo                   # checks + recording, output in tool/out/
+npm run demo -- --update       # also overwrite ../../screenshot/
+npm run live                   # smoke test https://venshine.github.io/json2model/
+```
+
 ## Credits
 
 Bundled fonts, both under the [SIL Open Font License 1.1](https://openfontlicense.org) (license texts in [`licenses/`](licenses)):
